@@ -1,5 +1,9 @@
 <?php
 
+namespace application;
+use domain\CharacterInformation;
+use PDO;
+
 /**
  * @since 1.0
  * @author Echodes / Joost de Locht

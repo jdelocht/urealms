@@ -1,4 +1,10 @@
 <?php
+namespace infrastructure;
+
+use application\CharacterInformationApi;
+use application\CharacterInformationPdoRepository;
+use PDO;
+use PDOException;
 
 /**
  * @since 1.0

@@ -1,4 +1,5 @@
 <?php
+namespace application;
 
 /**
  * @since 1.0

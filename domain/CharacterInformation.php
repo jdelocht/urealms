@@ -1,4 +1,5 @@
 <?php
+namespace domain;
 
 /**
  * @since 1.0

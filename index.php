@@ -6,11 +6,20 @@
  * Time: 20:10
  */
 
-require_once __DIR__ . '/domain/CharacterInformation.php';
-require_once __DIR__ . '/application/CharacterInformationApi.php';
-require_once __DIR__ . '/application/CharacterInformationRepository.php';
-require_once __DIR__ . '/application/CharacterInformationPdoRepository.php';
-require_once __DIR__ . '/interface/UrealmsApiFactory.php';
+use domain\CharacterInformation;
+use infrastructure\UrealmsApiFactory;
+
+error_reporting(E_ALL);
+
+spl_autoload_register(function ($class) {
+    $file = __DIR__  . '/' . str_replace('\\', '/', $class) . '.php';
+
+    if(file_exists($file)) {
+        require_once $file;
+        return;
+    }
+    echo $file . ' bestaat niet';
+});
 
 $character = '';
 
