@@ -6,9 +6,28 @@
  */
 class CharacterInformationPdoRepository implements CharacterInformationRepository
 {
+    /**
+     * @var PDO
+     */
+    private $link;
 
-    public function getCharacterInformation()
+    /**
+     * CharacterInformationPdoRepository constructor.
+     * @param PDO $link
+     */
+    public function __construct(PDO $link)
     {
-        // TODO: Implement getCharacterInformation() method.
+        $this->link = $link;
+    }
+
+    public function getCharacterInformation($character)
+    {
+        $characterInformation = [];
+        $query = "SELECT `name` FROM `urealms`";
+
+        foreach ($this->link->query($query) as $row) {
+            $characterInformation[] = new CharacterInformation($row['name'], 'lastname', 'race', 'subrace', 'gender', 'class');
+        }
+        return $characterInformation;
     }
 }

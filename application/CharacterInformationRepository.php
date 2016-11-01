@@ -6,5 +6,5 @@
  */
 interface CharacterInformationRepository
 {
-    public function getCharacterInformation();
+    public function getCharacterInformation($character);
 }
