@@ -54,9 +54,9 @@ class CharacterInformation
         return $this->characterSubRace;
     }
 
-    public function setCharacterGender($characterGender)
+    public function getCharacterGender()
     {
-        $this->characterGender = $characterGender;
+        return $this->characterGender;
     }
 
     public function getCharacterClass()

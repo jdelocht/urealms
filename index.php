@@ -28,14 +28,11 @@ $Information = $characterInformationApi->getInformationFor($character);
 
 /** @var CharacterInformation $characterInformation */
 foreach ($Information as $characterInformation) {
-    echo $characterInformation->getCharacterName();
+    echo 'Character: ' . '<br>'
+        . $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . '<br>'
+        . $characterInformation->getCharacterGender() . '<br><br>'
+        . 'Race: ' . '<br>'
+        . $characterInformation->getCharacterRace() . ', ' . $characterInformation->getCharacterSubRace() . '<br>'
+        . $characterInformation->getCharacterClass() . '<br><br>'
+    ;
 }
-
-echo 'Character Name: ' . '<br>'
-    . 'Gwynneth(Name) ' . 'Sunsword(LastName) ' . '<br>'
-    . 'Race: ' . '<br>'
-    . 'Noble Born(subrace) ' . 'Elf(race) ' . '<br>'
-    . 'Gender: ' . '<br>'
-    . 'Female ' . '<br>'
-    . 'Class: ' . '<br>'
-    . 'Sun Cleric ' . '<br>';

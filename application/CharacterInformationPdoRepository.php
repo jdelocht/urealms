@@ -1,6 +1,7 @@
 <?php
 
 namespace application;
+
 use domain\CharacterInformation;
 use PDO;
 
@@ -27,10 +28,10 @@ class CharacterInformationPdoRepository implements CharacterInformationRepositor
     public function getCharacterInformation($character)
     {
         $characterInformation = [];
-        $query = "SELECT `name` FROM `urealms`";
+        $query = "SELECT `name`, `last_name`, `race`, `sub_race`, `gender`, `class` FROM `urealms`";
 
         foreach ($this->link->query($query) as $row) {
-            $characterInformation[] = new CharacterInformation($row['name'], 'lastname', 'race', 'subrace', 'gender', 'class');
+            $characterInformation[] = new CharacterInformation($row['name'], $row['last_name'], $row['race'], $row['sub_race'], $row['gender'], $row['class']);
         }
         return $characterInformation;
     }
