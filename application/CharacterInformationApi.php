@@ -21,8 +21,8 @@ class CharacterInformationApi
         $this->characterInformationRepository = $characterInformationRepository;
     }
 
-    public function getInformationFor($character)
+    public function getInformationFor($race)
     {
-        return $this->characterInformationRepository->getCharacterInformation($character);
+        return $this->characterInformationRepository->getCharacterInformation($race);
     }
 }

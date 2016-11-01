@@ -21,18 +21,18 @@ spl_autoload_register(function ($class) {
     echo $file . ' bestaat niet';
 });
 
-$character = '';
+
 
 $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
-$Information = $characterInformationApi->getInformationFor($character);
+$Information = $characterInformationApi->getInformationFor('Elf');
 
 /** @var CharacterInformation $characterInformation */
 foreach ($Information as $characterInformation) {
     echo 'Character: ' . '<br>'
         . $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . '<br>'
         . $characterInformation->getCharacterGender() . '<br><br>'
-        . 'Race: ' . '<br>'
-        . $characterInformation->getCharacterRace() . ', ' . $characterInformation->getCharacterSubRace() . '<br>'
+        . 'Sub Race: ' . '<br>'
+        . $characterInformation->getCharacterSubRace() . '<br>'
         . $characterInformation->getCharacterClass() . '<br><br>'
     ;
 }

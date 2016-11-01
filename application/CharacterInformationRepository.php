@@ -6,5 +6,5 @@ namespace application;
  */
 interface CharacterInformationRepository
 {
-    public function getCharacterInformation($character);
+    public function getCharacterInformation($race);
 }

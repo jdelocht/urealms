@@ -25,13 +25,13 @@ class CharacterInformationPdoRepository implements CharacterInformationRepositor
         $this->link = $link;
     }
 
-    public function getCharacterInformation($character)
+    public function getCharacterInformation($race)
     {
         $characterInformation = [];
-        $query = "SELECT `name`, `last_name`, `race`, `sub_race`, `gender`, `class` FROM `urealms`";
+        $query = "SELECT `name`, `last_name`, `sub_race`, `gender`, `class` FROM `urealms` WHERE `race` = '$race'";
 
         foreach ($this->link->query($query) as $row) {
-            $characterInformation[] = new CharacterInformation($row['name'], $row['last_name'], $row['race'], $row['sub_race'], $row['gender'], $row['class']);
+            $characterInformation[] = new CharacterInformation($row['name'], $row['last_name'], $row['sub_race'], $row['gender'], $row['class']);
         }
         return $characterInformation;
     }
