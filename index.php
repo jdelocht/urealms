@@ -14,5 +14,3 @@ echo 'Character Name: ' . '<br>'
     . 'Female ' . '<br>'
     . 'Class: ' . '<br>'
     . 'Sun Cleric ' . '<br>';
-
-
