@@ -25,14 +25,17 @@ spl_autoload_register(function ($class) {
 
 $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
 $Information = $characterInformationApi->getInformationFor('Elf');
+$InformationTwo = $characterInformationApi->getInformationFor('Kobold');
 
+echo 'The Elves<br><br>';
 /** @var CharacterInformation $characterInformation */
 foreach ($Information as $characterInformation) {
-    echo 'Character: ' . '<br>'
-        . $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . '<br>'
-        . $characterInformation->getCharacterGender() . '<br><br>'
-        . 'Sub Race: ' . '<br>'
-        . $characterInformation->getCharacterSubRace() . '<br>'
-        . $characterInformation->getCharacterClass() . '<br><br>'
+    echo $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . ' ' . $characterInformation->getCharacterGender() . ' ' . $characterInformation->getCharacterSubRace() . ' ' . $characterInformation->getCharacterClass() . '<br><br>'
+    ;
+}
+
+echo 'The Kobolds<br><br>';
+foreach ($InformationTwo as $characterInformation) {
+    echo $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . ' ' . $characterInformation->getCharacterGender() . ' ' . $characterInformation->getCharacterSubRace() . ' ' . $characterInformation->getCharacterClass() . '<br><br>'
     ;
 }
