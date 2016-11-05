@@ -34,5 +34,5 @@ $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
 $characterInformationApi->saveCharacter($character);
 
 
-header('location: /urealms/index.php?race=dwarf');
+header('location: /urealms/index.php');
 
