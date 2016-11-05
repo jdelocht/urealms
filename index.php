@@ -22,20 +22,14 @@ spl_autoload_register(function ($class) {
 });
 
 
+$race = $_GET['race'];
 
 $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
-$Information = $characterInformationApi->getInformationFor('Elf');
-$InformationTwo = $characterInformationApi->getInformationFor('Kobold');
+$Information = $characterInformationApi->getInformationFor($race);
 
-echo 'The Elves<br><br>';
+echo $race . '<br><br>';
 /** @var CharacterInformation $characterInformation */
 foreach ($Information as $characterInformation) {
-    echo $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . ' ' . $characterInformation->getCharacterGender() . ' ' . $characterInformation->getCharacterSubRace() . ' ' . $characterInformation->getCharacterClass() . '<br><br>'
-    ;
-}
-
-echo 'The Kobolds<br><br>';
-foreach ($InformationTwo as $characterInformation) {
     echo $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . ' ' . $characterInformation->getCharacterGender() . ' ' . $characterInformation->getCharacterSubRace() . ' ' . $characterInformation->getCharacterClass() . '<br><br>'
     ;
 }
