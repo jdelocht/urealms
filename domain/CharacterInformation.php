@@ -18,17 +18,19 @@ class CharacterInformation
      * CharacterInformation constructor.
      * @param $characterName
      * @param $characterLastName
+     * @param $characterRace
      * @param $characterSubRace
      * @param $characterGender
      * @param $characterClass
      */
-    public function __construct($characterName, $characterLastName, $characterSubRace, $characterGender, $characterClass)
+    public function __construct($characterName, $characterLastName, $characterRace, $characterSubRace, $characterGender, $characterClass)
     {
         $this->characterName = $characterName;
         $this->characterLastName = $characterLastName;
         $this->characterSubRace = $characterSubRace;
         $this->characterClass = $characterClass;
         $this->characterGender = $characterGender;
+        $this->characterRace = $characterRace;
     }
 
     public function getCharacterName()
@@ -39,6 +41,11 @@ class CharacterInformation
     public function getCharacterLastName()
     {
         return $this->characterLastName;
+    }
+
+    public function getCharacterRace()
+    {
+        return $this->characterRace;
     }
 
     //Character sub races are about to be re-purposed, becoming character back stories. This will influence this parameter.
