@@ -61,8 +61,28 @@ $Information = $characterInformationApi->getInformationFor($race);
 </form>
 </body>
 
+    <a href = "http://localhost:4433/urealms/index.php?race=elf" class = "">The Elves</a>
+    <a href = "http://localhost:4433/urealms/index.php?race=dwarf" class = "">The Dwarves</a>
+    <a href = "http://localhost:4433/urealms/index.php?race=gnome" class = "">The Gnomes</a>
+    <a href = "http://localhost:4433/urealms/index.php?race=kobold" class = "">The Kobolds</a>
+    <a href = "http://localhost:4433/urealms/index.php?race=goblin" class = "">The Goblins</a>
+    <a href = "http://localhost:4433/urealms/index.php?race=porc" class = "">The Porcs</a>
+
 <?php
-echo $race . '<br><br>';
+
+if ($race == 'elf') {
+    $raceName = 'The Elves';
+} elseif ($race == 'dwarf') {
+    $raceName = 'The Dwarves';
+} elseif ($race == 'gnome') {
+    $raceName = 'The Gnomes';
+} elseif ($race == 'goblin') {
+    $raceName = 'The Goblins';
+} else {
+    $raceName = 'The Porcs';
+}
+
+echo '<br><br>' . $raceName . '<br><br>';
 /** @var CharacterInformation $characterInformation */
 foreach ($Information as $characterInformation) {
     echo $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . ' ' . $characterInformation->getCharacterGender() . ' ' . $characterInformation->getCharacterSubRace() . ' ' . $characterInformation->getCharacterClass() . '<br><br>';
