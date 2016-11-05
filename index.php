@@ -6,6 +6,8 @@
  * Time: 20:10
  */
 
+//URL: http://localhost:4433/urealms/index.php?race=dwarf
+
 use domain\CharacterInformation;
 use infrastructure\UrealmsApiFactory;
 
@@ -26,67 +28,42 @@ $race = $_GET['race'];
 $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
 $Information = $characterInformationApi->getInformationFor($race);
 ?>
+<body>
+<form action = "save.php" method = "post">
+    <div>
+        <label for = "name">First Name: </label>
+        <input type = "text" id = "name" name = "name"/>
+    </div>
+    <div>
+        <label for = "last_name">Last Name: </label>
+        <input type = "text" id = "last_name" name = "last_name"/>
+    </div>
+    <div>
+        <label for = "race">Race: </label>
+        <input type = "text" id = "race" name = "race"/>
+    </div>
+    <div>
+        <label for = "sub_race">Sub Race: </label>
+        <input type = "text" id = "sub_race" name = "sub_race"/>
+    </div>
+    <div>
+        <label for = "gender">Gender:<br></label>
+        <input type = "radio" id = "gender" name = "gender" value = "Male" checked> Male<br>
+        <input type = "radio" id = "gender" name = "gender" value = "Female"> Female<br>
+    </div>
+    <div>
+        <label for = "class">Class: </label>
+        <input type = "text" id = "class" name = "class"/>
+    </div>
+    <div class = "button">
+        <input type = "submit" id = "submit" value = "Create your character!"/>
+    </div>
+</form>
+</body>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
-
-    <body>
-        <table width="400" border="0" align="center" cellpadding="3" cellspacing="0">
-            <tr>
-                <td><strong>Character Creation</strong></td>
-            </tr>
-        </table>
-        <table width="400" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#dcdcdc">
-            <tr>
-                <form method = "post" action = "save.php">
-                    <td>
-                        <table width="400" border="0" cellpadding="3" cellspacing="1" bgcolor="#f0f8ff">
-                            <tr>
-                                <td width="117">Name</td>
-                                <td width="14">:</td>
-                                <td width="357"><input type = "text" name = "firstname" id = "name" size = "40"></td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>:</td>
-                                <td><input type = "text" name = "Last Name"  id = "lastname" size = "40"></td>
-                            </tr>
-                            <tr>
-                                <td valign="top">Comment</td>
-                                <td valign="top">:</td>
-                                <td><input type="text" name= "Sub Race" id="subrace" size="40"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" name="Submit" value="Submit"/></td><td><input type="reset" name="Sumbit2" value="Reset"/></td>
-                            </tr>
-                        </table>
-                    </td>
-                </form>
-            </tr>
-        </table>
-        <table width="400" border="0" align="center" cellpadding="3" cellspacing="0">
-            <tr>
-                <td>
 <?php
-
-
 echo $race . '<br><br>';
 /** @var CharacterInformation $characterInformation */
 foreach ($Information as $characterInformation) {
-    echo $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . ' ' . $characterInformation->getCharacterGender() . ' ' . $characterInformation->getCharacterSubRace() . ' ' . $characterInformation->getCharacterClass() . '<br><br>'
-    ;
+    echo $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . ' ' . $characterInformation->getCharacterGender() . ' ' . $characterInformation->getCharacterSubRace() . ' ' . $characterInformation->getCharacterClass() . '<br><br>';
 }
-?>
-                </td>
-            </tr>
-        </table>
-    </body>
-</html>
-
-
-
-

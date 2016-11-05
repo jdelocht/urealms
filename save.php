@@ -20,7 +20,19 @@ spl_autoload_register(function ($class) {
     echo $file . ' bestaat niet';
 });
 
-$character = new domain\CharacterInformation('Joost', 'de Locht', 'Dwarf', 'Hill Dwarf', 'Male', 'Ranger');
+$characterName = $_POST['name'];
+$characterLastName = $_POST['last_name'];
+$characterRace = $_POST['race'];
+$characterSubRace = $_POST['sub_race'];
+$characterGender = $_POST['gender'];
+$characterClass = $_POST['class'];
+
+$character = new domain\CharacterInformation($characterName, $characterLastName, $characterRace, $characterSubRace, $characterGender, $characterClass);
+
+
 $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
 $characterInformationApi->saveCharacter($character);
+
+
+header('location: /urealms/index.php?race=dwarf');
 
