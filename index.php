@@ -32,13 +32,13 @@ $Information = $characterInformationApi->getInformationFor($race);
     <form action = "save.php" method = "post">
         <table class="table">
             <tr>
-                <td><br><label for = "name">First Name: </label></td>
-                <td><br><input type = "text" id = "name" name = "name"/><br></td>
+                <td width="1"><label for = "name">First Name: </label></td>
+                <td><input type = "text" id = "name" name = "name" style = "width:300px"/><br></td>
 
             </tr>
             <tr>
                 <td><label for = "last_name">Last Name: </label></td>
-                <td><input type = "text" id = "last_name" name = "last_name"/><br></td>
+                <td><input type = "text" id = "last_name" name = "last_name" style = "width:300px"/><br></td>
             </tr>
             <tr>
                 <td><label for = "race">Race: </label></td>
@@ -53,7 +53,7 @@ $Information = $characterInformationApi->getInformationFor($race);
             </tr>
             <tr>
                 <td><label for = "sub_race">Sub Race: </label></td>
-                <td><input type = "text" id = "sub_race" name = "sub_race"/><br></td>
+                <td><input type = "text" id = "sub_race" name = "sub_race" style = "width:300px"/><br></td>
             </tr>
             <tr>
                 <td><label for = "gender">Gender:<br></label>
@@ -64,7 +64,7 @@ $Information = $characterInformationApi->getInformationFor($race);
             </tr>
             <tr>
                 <td><label for = "class">Class: </label></td>
-                <td><input type = "text" id = "class" name = "class"/><br></td>
+                <td><input type = "text" id = "class" name = "class" style = "width:300px"/><br></td>
             </tr>
             <tr>
                 <td><br><input class = "button2" type = "submit" id = "submit" value = "Create your character!"/><br></td>

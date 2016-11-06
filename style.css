@@ -5,10 +5,10 @@
     text-shadow: 3px 3px black;
     font-family:  "Helvetica Neue",Helvetica,Arial,sans-serif;;
 }
-a:link    {color:white; background-color:transparent; text-decoration:none}
-a:visited {color:white; background-color:transparent; text-decoration:none}
-a:hover   {color:white; background-color:rgba(0, 0, 0, 0.2); text-decoration:underline}
-a:active  {color:white; background-color:transparent; text-decoration:underline}
+a:link    {color:#fff4e4; background-color:transparent; text-decoration:none}
+a:visited {color:#fff4e4; background-color:transparent; text-decoration:none}
+a:hover   {color:#fff4e4; background-color:rgba(0, 0, 0, 0.2); text-decoration:underline}
+a:active  {color:#fff4e4; background-color:transparent; text-decoration:underline}
 
 .top{
     background: url(http://live.urealms.com/img/Topbar.png) no-repeat;
@@ -19,7 +19,10 @@ a:active  {color:white; background-color:transparent; text-decoration:underline}
 
 .table {
     background: rgba(0, 0, 0, 0.5);
-    margin-left: 29%;
+    margin-left: 27.8%;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     color: white;
     border: black solid 5px;
 }
@@ -31,7 +34,7 @@ a:active  {color:white; background-color:transparent; text-decoration:underline}
 }
 
 .division2 {
-    color: white;
+    color: #fff4e4;
 }
 h1 {color: #b36e14}
 h2 {color: #b36e14}
@@ -50,11 +53,10 @@ h5 {color: #b36e14}
     border: solid black 2px;
 }
 
-
 .button {
     background-color: transparent;
     border: none;
-    color: white;
+    color: #fff4e4;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -65,7 +67,7 @@ h5 {color: #b36e14}
 .button2 {
     background-color: rgba(0, 0, 0, 0.3);
     border: black solid 1px ;
-    color: white;
+    color: #fff4e4;
     padding: 8px 32px;
     text-align: center;
     text-decoration: none;
