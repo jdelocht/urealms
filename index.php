@@ -1,16 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Joost
- * Date: 1-11-2016
- * Time: 20:10
- */
-
-//URL: http://localhost:4433/urealms/index.php?race=dwarf
 
 use domain\CharacterInformation;
 use infrastructure\UrealmsApiFactory;
 
+//URL: http://localhost:4433/urealms/index.php?race=dwarf
 error_reporting(E_ALL);
 
 spl_autoload_register(function ($class) {
@@ -23,11 +16,11 @@ spl_autoload_register(function ($class) {
     echo $file . ' bestaat niet';
 });
 
-$race = $_GET['race'];
-
 $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
+$race = isset($_GET['race']) ? $_GET['race'] : 1;
 $Information = $characterInformationApi->getInformationFor($race);
 ?>
+
 <body>
 <form action = "save.php" method = "post">
     <div>
@@ -70,19 +63,22 @@ $Information = $characterInformationApi->getInformationFor($race);
 
 <?php
 
-if ($race == 'elf') {
-    $raceName = 'The Elves';
-} elseif ($race == 'dwarf') {
-    $raceName = 'The Dwarves';
-} elseif ($race == 'gnome') {
-    $raceName = 'The Gnomes';
-} elseif ($race == 'goblin') {
-    $raceName = 'The Goblins';
-} else {
-    $raceName = 'The Porcs';
+function getCharacterRaceForTitle($race)
+{
+    if ($race == 'elf') {
+        $raceName = 'The Elves';
+    } elseif ($race == 'dwarf') {
+        $raceName = 'The Dwarves';
+    } elseif ($race == 'gnome') {
+        $raceName = 'The Gnomes';
+    } elseif ($race == 'goblin') {
+        $raceName = 'The Goblins';
+    } else {
+        $raceName = 'The Porcs';
+    } return $raceName;
 }
 
-echo '<br><br>' . $raceName . '<br><br>';
+echo '<br><br>' . getCharacterRaceForTitle($race) . '<br><br>';
 /** @var CharacterInformation $characterInformation */
 foreach ($Information as $characterInformation) {
     echo $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . ' ' . $characterInformation->getCharacterGender() . ' ' . $characterInformation->getCharacterSubRace() . ' ' . $characterInformation->getCharacterClass() . '<br><br>';
