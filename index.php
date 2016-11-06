@@ -103,12 +103,20 @@ function getCharacterRaceForTitle($race)
         return $raceName;
 }
 
-echo '<br><h2>' . getCharacterRaceForTitle($race) . '</h2><br>';
+echo '<h2>' . getCharacterRaceForTitle($race) . '</h2>';
+
+?>
+    <div class="division3">
+<?php
 /** @var CharacterInformation $characterInformation */
 foreach ($Information as $characterInformation) {
-    echo $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . ' ' . $characterInformation->getCharacterGender() . ' ' . $characterInformation->getCharacterSubRace() . ' ' . $characterInformation->getCharacterClass() . '<br>';
+    echo '<div class="division4"><br>' . 'Name: ' . $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . '<br>' .
+        'Gender: ' . $characterInformation->getCharacterGender() . '<br>' .
+        'Sub Race: ' . $characterInformation->getCharacterSubRace() . '<br>' .
+        'Class: ' . $characterInformation->getCharacterClass() . '<br><br>' . '</div>';
 }
 
 ?>
+    </div>
 </div>
 <?php
