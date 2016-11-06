@@ -25,14 +25,15 @@ $Information = $characterInformationApi->getInformationFor($race);
 </head>
 
 <body class="main">
-    <img src="http://live.urealms.com/img/logo.png" height="200px"><br>
+    <div class="top">
+    <br><img src="http://live.urealms.com/img/logo.png" height="200px"></div>
     <h1>Character Creation</h1>
 
     <form action = "save.php" method = "post">
         <table class="table">
             <tr>
-                <td><label for = "name">First Name: </label></td>
-                <td><input type = "text" id = "name" name = "name"/><br></td>
+                <td><br><label for = "name">First Name: </label></td>
+                <td><br><input type = "text" id = "name" name = "name"/><br></td>
 
             </tr>
             <tr>
@@ -66,12 +67,12 @@ $Information = $characterInformationApi->getInformationFor($race);
                 <td><input type = "text" id = "class" name = "class"/><br></td>
             </tr>
             <tr>
-                <td><input class = "button2" type = "submit" id = "submit" value = "Create your character!"/><br></td>
+                <td><br><input class = "button2" type = "submit" id = "submit" value = "Create your character!"/><br></td>
             </tr>
         </table>
     </form>
 </body>
-
+<br>
 <div class = "division">
     <a href = "http://localhost:4433/urealms/index.php?race=Elf" class = "button">The Elves</a>
     <a href = "http://localhost:4433/urealms/index.php?race=Dwarf" class = "button">The Dwarves</a>
