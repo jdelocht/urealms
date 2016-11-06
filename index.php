@@ -20,66 +20,95 @@ $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
 $race = isset($_GET['race']) ? $_GET['race'] : 1;
 $Information = $characterInformationApi->getInformationFor($race);
 ?>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 
-<body>
-<form action = "save.php" method = "post">
-    <div>
-        <label for = "name">First Name: </label>
-        <input type = "text" id = "name" name = "name"/>
-    </div>
-    <div>
-        <label for = "last_name">Last Name: </label>
-        <input type = "text" id = "last_name" name = "last_name"/>
-    </div>
-    <div>
-        <label for = "race">Race: </label>
-        <input type = "text" id = "race" name = "race"/>
-    </div>
-    <div>
-        <label for = "sub_race">Sub Race: </label>
-        <input type = "text" id = "sub_race" name = "sub_race"/>
-    </div>
-    <div>
-        <label for = "gender">Gender:<br></label>
-        <input type = "radio" id = "gender" name = "gender" value = "Male" checked> Male<br>
-        <input type = "radio" id = "gender" name = "gender" value = "Female"> Female<br>
-    </div>
-    <div>
-        <label for = "class">Class: </label>
-        <input type = "text" id = "class" name = "class"/>
-    </div>
-    <div class = "button">
-        <input type = "submit" id = "submit" value = "Create your character!"/>
-    </div>
-</form>
+<body class="main">
+    <img src="http://live.urealms.com/img/logo.png" height="200px"><br>
+    <h1>Character Creation</h1>
+
+    <form action = "save.php" method = "post">
+        <table class="table">
+            <tr>
+                <td><label for = "name">First Name: </label></td>
+                <td><input type = "text" id = "name" name = "name"/><br></td>
+
+            </tr>
+            <tr>
+                <td><label for = "last_name">Last Name: </label></td>
+                <td><input type = "text" id = "last_name" name = "last_name"/><br></td>
+            </tr>
+            <tr>
+                <td><label for = "race">Race: </label></td>
+                <td>
+                    <input type = "radio" id = "race" name = "race" value = "Elf" checked> Elf
+                    <input type = "radio" id = "race" name = "race" value = "Dwarf"> Dwarf
+                    <input type = "radio" id = "race" name = "race" value = "Gnome"> Gnome
+                    <input type = "radio" id = "race" name = "race" value = "Kobold"> Kobold
+                    <input type = "radio" id = "race" name = "race" value = "Goblin"> Goblin
+                    <input type = "radio" id = "race" name = "race" value = "Porc"> Porc <br>
+                </td>
+            </tr>
+            <tr>
+                <td><label for = "sub_race">Sub Race: </label></td>
+                <td><input type = "text" id = "sub_race" name = "sub_race"/><br></td>
+            </tr>
+            <tr>
+                <td><label for = "gender">Gender:<br></label>
+                <td>
+                    <input type = "radio" id = "gender" name = "gender" value = "Male" checked> Male
+                    <input type = "radio" id = "gender" name = "gender" value = "Female"> Female <br>
+                </td>
+            </tr>
+            <tr>
+                <td><label for = "class">Class: </label></td>
+                <td><input type = "text" id = "class" name = "class"/><br></td>
+            </tr>
+            <tr>
+                <td><input class = "button2" type = "submit" id = "submit" value = "Create your character!"/><br></td>
+            </tr>
+        </table>
+    </form>
 </body>
 
-    <a href = "http://localhost:4433/urealms/index.php?race=elf" class = "">The Elves</a>
-    <a href = "http://localhost:4433/urealms/index.php?race=dwarf" class = "">The Dwarves</a>
-    <a href = "http://localhost:4433/urealms/index.php?race=gnome" class = "">The Gnomes</a>
-    <a href = "http://localhost:4433/urealms/index.php?race=kobold" class = "">The Kobolds</a>
-    <a href = "http://localhost:4433/urealms/index.php?race=goblin" class = "">The Goblins</a>
-    <a href = "http://localhost:4433/urealms/index.php?race=porc" class = "">The Porcs</a>
+<div class = "division">
+    <a href = "http://localhost:4433/urealms/index.php?race=Elf" class = "button">The Elves</a>
+    <a href = "http://localhost:4433/urealms/index.php?race=Dwarf" class = "button">The Dwarves</a>
+    <a href = "http://localhost:4433/urealms/index.php?race=Gnome" class = "button">The Gnomes</a>
+    <a href = "http://localhost:4433/urealms/index.php?race=Kobold" class = "button">The Kobolds</a>
+    <a href = "http://localhost:4433/urealms/index.php?race=Goblin" class = "button">The Goblins</a>
+    <a href = "http://localhost:4433/urealms/index.php?race=Porc" class = "button">The Porcs</a>
+</div>
+
+<div class = "division2">
 
 <?php
 
 function getCharacterRaceForTitle($race)
 {
-    if ($race == 'elf') {
-        $raceName = 'The Elves';
-    } elseif ($race == 'dwarf') {
-        $raceName = 'The Dwarves';
-    } elseif ($race == 'gnome') {
-        $raceName = 'The Gnomes';
-    } elseif ($race == 'goblin') {
-        $raceName = 'The Goblins';
-    } else {
+    if ($race == 'Porc') {
         $raceName = 'The Porcs';
-    } return $raceName;
+    } elseif ($race == 'Dwarf') {
+        $raceName = 'The Dwarves';
+    } elseif ($race == 'Gnome') {
+        $raceName = 'The Gnomes';
+    } elseif ($race == 'Goblin') {
+        $raceName = 'The Goblins';
+    } elseif ($race == 'Kobold') {
+        $raceName = 'The Kobolds';
+    } elseif ($race == 'Elf') {
+        $raceName = 'The Elves';
+    } else $raceName = '';
+        return $raceName;
 }
 
-echo '<br><br>' . getCharacterRaceForTitle($race) . '<br><br>';
+echo '<br><h2>' . getCharacterRaceForTitle($race) . '</h2><br>';
 /** @var CharacterInformation $characterInformation */
 foreach ($Information as $characterInformation) {
-    echo $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . ' ' . $characterInformation->getCharacterGender() . ' ' . $characterInformation->getCharacterSubRace() . ' ' . $characterInformation->getCharacterClass() . '<br><br>';
+    echo $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . ' ' . $characterInformation->getCharacterGender() . ' ' . $characterInformation->getCharacterSubRace() . ' ' . $characterInformation->getCharacterClass() . '<br>';
 }
+
+?>
+</div>
+<?php
