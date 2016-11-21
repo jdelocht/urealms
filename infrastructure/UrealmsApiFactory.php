@@ -12,6 +12,9 @@ use PDOException;
  */
 class UrealmsApiFactory
 {
+    /**
+     * @return CharacterInformationApi
+     */
     public static function getCharacterInformationApi()
     {
         return new CharacterInformationApi(
@@ -19,6 +22,9 @@ class UrealmsApiFactory
         );
     }
 
+    /**
+     * @return CharacterInformationPdoRepository
+     */
     public static function createSessionRepository()
     {
         $databaseConnection = 'mysql:dbname=gekkojdl;host=localhost';

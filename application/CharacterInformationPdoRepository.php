@@ -3,6 +3,8 @@
 namespace application;
 
 use domain\CharacterInformation;
+use domain\Gender;
+use Exception;
 use PDO;
 
 /**
@@ -34,9 +36,15 @@ class CharacterInformationPdoRepository implements CharacterInformationRepositor
         $characterInformation = [];
         $query = "SELECT `name`, `last_name`, `race`, `sub_race`, `gender`, `class` FROM `urealms` WHERE `race` = '$race'";
 
+
         foreach ($this->link->query($query) as $row) {
-            $characterInformation[] = new CharacterInformation($row['name'], $row['last_name'], $row['race'], $row['sub_race'], $row['gender'], $row['class']);
+            try {
+                $characterInformation[] = new CharacterInformation($row['name'], $row['last_name'], $row['race'], $row['sub_race'], new Gender($row['gender']), $row['class']);
+                } catch (Exception $e) {
+                    echo 'Caught exception: The given Gender must be either Male or Female';
+                }
         }
+
         return $characterInformation;
     }
 
@@ -51,7 +59,7 @@ class CharacterInformationPdoRepository implements CharacterInformationRepositor
         '" . $character->getCharacterLastName() . "',
         '" . $character->getCharacterRace() . "',
         '" . $character->getCharacterSubRace() . "',
-        '" . $character->getCharacterGender() . "',
+        '" . $character->getGender() . "',
         '" . $character->getCharacterClass() . "')";
 
         return $this->link->query($query);

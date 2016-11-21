@@ -17,8 +17,6 @@ spl_autoload_register(function ($class) {
 });
 
 $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
-$race = isset($_GET['race']) ? $_GET['race'] : 1;
-$Information = $characterInformationApi->getInformationFor($race);
 ?>
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -85,7 +83,14 @@ $Information = $characterInformationApi->getInformationFor($race);
 <div class = "division2">
 
 <?php
+$race = array_key_exists('race', $_GET)
+    ? $_GET['race']
+    : '';
 
+/**
+ * @param $race
+ * @return string
+ */
 function getCharacterRaceForTitle($race)
 {
     if ($race == 'Porc') {
@@ -100,7 +105,9 @@ function getCharacterRaceForTitle($race)
         $raceName = 'The Kobolds';
     } elseif ($race == 'Elf') {
         $raceName = 'The Elves';
-    } else $raceName = '';
+    } else {
+        $raceName = '';
+    }
         return $raceName;
 }
 
@@ -109,12 +116,17 @@ echo '<h2>' . getCharacterRaceForTitle($race) . '</h2>';
 ?>
     <div class="division3">
 <?php
-/** @var CharacterInformation $characterInformation */
-foreach ($Information as $characterInformation) {
-    echo '<div class="division4"><br>' . 'Name: ' . $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . '<br>' .
-        'Gender: ' . $characterInformation->getCharacterGender() . '<br>' .
-        'Sub Race: ' . $characterInformation->getCharacterSubRace() . '<br>' .
-        'Class: ' . $characterInformation->getCharacterClass() . '<br><br>' . '</div>';
+
+if (array_key_exists('race', $_GET)) {
+
+    $information = $characterInformationApi->getInformationFor($race);
+    /** @var CharacterInformation $characterInformation */
+    foreach ($information as $characterInformation) {
+        echo '<div class="division4"><br>' . 'Name: ' . $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . '<br>' .
+            'Gender: ' . $characterInformation->getGender() . '<br>' .
+            'Sub Race: ' . $characterInformation->getCharacterSubRace() . '<br>' .
+            'Class: ' . $characterInformation->getCharacterClass() . '<br><br>' . '</div>';
+    }
 }
 
 ?>

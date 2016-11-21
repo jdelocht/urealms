@@ -7,12 +7,18 @@ namespace domain;
  */
 class CharacterInformation
 {
+    /** @var string */
     private $characterName;
+    /** @var string  */
     private $characterLastName;
+    /** @var string */
     private $characterRace;
+    /** @var string  */
     private $characterSubRace;
+    /** @var string  */
     private $characterClass;
-    private $characterGender;
+    /** @var Gender  */
+    private $gender;
 
     /**
      * CharacterInformation constructor.
@@ -20,45 +26,63 @@ class CharacterInformation
      * @param $characterLastName
      * @param $characterRace
      * @param $characterSubRace
-     * @param $characterGender
+     * @param string $gender
      * @param $characterClass
      */
-    public function __construct($characterName, $characterLastName, $characterRace, $characterSubRace, $characterGender, $characterClass)
+    public function __construct($characterName, $characterLastName, $characterRace, $characterSubRace, Gender $gender, $characterClass)
     {
         $this->characterName = $characterName;
         $this->characterLastName = $characterLastName;
         $this->characterSubRace = $characterSubRace;
         $this->characterClass = $characterClass;
-        $this->characterGender = $characterGender;
+        $this->gender = $this->getGender();
         $this->characterRace = $characterRace;
     }
 
+    /**
+     * @return string
+     */
     public function getCharacterName()
     {
         return $this->characterName;
     }
 
+    /**
+     * @return string
+     */
     public function getCharacterLastName()
     {
         return $this->characterLastName;
     }
 
+    /**
+     * @return string
+     */
     public function getCharacterRace()
     {
         return $this->characterRace;
     }
 
     //Character sub races are about to be re-purposed, becoming character back stories. This will influence this parameter.
+    /**
+     * @return string
+     */
     public function getCharacterSubRace()
     {
         return $this->characterSubRace;
     }
 
-    public function getCharacterGender()
+    /**
+     * @return Gender|string
+     */
+    public function getGender()
     {
-        return $this->characterGender;
+        return $this->gender;
     }
 
+    /**
+     * @return string
+     */
     public function getCharacterClass()
     {
         return $this->characterClass;
