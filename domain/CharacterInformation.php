@@ -11,8 +11,8 @@ class CharacterInformation
     private $characterName;
     /** @var string  */
     private $characterLastName;
-    /** @var string */
-    private $characterRace;
+    /** @var Race */
+    private $race;
     /** @var string  */
     private $characterSubRace;
     /** @var string  */
@@ -22,21 +22,21 @@ class CharacterInformation
 
     /**
      * CharacterInformation constructor.
-     * @param $characterName
-     * @param $characterLastName
-     * @param $characterRace
-     * @param $characterSubRace
-     * @param string $gender
-     * @param $characterClass
+     * @param string $characterName
+     * @param string $characterLastName
+     * @param Race $race
+     * @param string $characterSubRace
+     * @param Gender $gender
+     * @param string $characterClass
      */
-    public function __construct($characterName, $characterLastName, $characterRace, $characterSubRace, Gender $gender, $characterClass)
+    public function __construct($characterName, $characterLastName, Race $race, $characterSubRace, Gender $gender, $characterClass)
     {
         $this->characterName = $characterName;
         $this->characterLastName = $characterLastName;
         $this->characterSubRace = $characterSubRace;
         $this->characterClass = $characterClass;
-        $this->gender = $this->getGender();
-        $this->characterRace = $characterRace;
+        $this->gender = $gender;
+        $this->race = $race;
     }
 
     /**
@@ -60,7 +60,7 @@ class CharacterInformation
      */
     public function getCharacterRace()
     {
-        return $this->characterRace;
+        return $this->race->getRace();
     }
 
     //Character sub races are about to be re-purposed, becoming character back stories. This will influence this parameter.
@@ -77,7 +77,7 @@ class CharacterInformation
      */
     public function getGender()
     {
-        return $this->gender;
+        return $this->gender->getGender();
     }
 
     /**
@@ -86,5 +86,32 @@ class CharacterInformation
     public function getCharacterClass()
     {
         return $this->characterClass;
+    }
+
+    /**
+     * @param $race
+     * @return string
+     */
+    public function getCharacterRaceForTitle($race)
+    {
+        if ($race == 'Porc') {
+            return 'The Porcs';
+        }
+        if ($race == 'Dwarf') {
+            return 'The Dwarves';
+        }
+        if ($race == 'Gnome') {
+            return 'The Gnomes';
+        }
+        if ($race == 'Goblin') {
+            return 'The Goblins';
+        }
+        if ($race == 'Kobold') {
+            return 'The Kobolds';
+        }
+        if ($race == 'Elf') {
+            return 'The Elves';
+        }
+        return '';
     }
 }

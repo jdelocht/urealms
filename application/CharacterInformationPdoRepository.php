@@ -4,6 +4,7 @@ namespace application;
 
 use domain\CharacterInformation;
 use domain\Gender;
+use domain\Race;
 use Exception;
 use PDO;
 
@@ -39,9 +40,9 @@ class CharacterInformationPdoRepository implements CharacterInformationRepositor
 
         foreach ($this->link->query($query) as $row) {
             try {
-                $characterInformation[] = new CharacterInformation($row['name'], $row['last_name'], $row['race'], $row['sub_race'], new Gender($row['gender']), $row['class']);
+                $characterInformation[] = new CharacterInformation($row['name'], $row['last_name'], new Race($row['race']), $row['sub_race'], new Gender($row['gender']), $row['class']);
                 } catch (Exception $e) {
-                    echo 'Caught exception: The given Gender must be either Male or Female';
+                    echo 'Caught exception: One or more of the given values are not allowed';
                 }
         }
 

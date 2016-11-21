@@ -86,40 +86,15 @@ $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
 $race = array_key_exists('race', $_GET)
     ? $_GET['race']
     : '';
-
-/**
- * @param $race
- * @return string
- */
-function getCharacterRaceForTitle($race)
-{
-    if ($race == 'Porc') {
-        $raceName = 'The Porcs';
-    } elseif ($race == 'Dwarf') {
-        $raceName = 'The Dwarves';
-    } elseif ($race == 'Gnome') {
-        $raceName = 'The Gnomes';
-    } elseif ($race == 'Goblin') {
-        $raceName = 'The Goblins';
-    } elseif ($race == 'Kobold') {
-        $raceName = 'The Kobolds';
-    } elseif ($race == 'Elf') {
-        $raceName = 'The Elves';
-    } else {
-        $raceName = '';
-    }
-        return $raceName;
-}
-
-echo '<h2>' . getCharacterRaceForTitle($race) . '</h2>';
-
 ?>
     <div class="division3">
 <?php
 
 if (array_key_exists('race', $_GET)) {
-
     $information = $characterInformationApi->getInformationFor($race);
+
+    echo '<h2>' . $characterInformation->getCharacterRaceForTitle($race) . '</h2>';
+
     /** @var CharacterInformation $characterInformation */
     foreach ($information as $characterInformation) {
         echo '<div class="division4"><br>' . 'Name: ' . $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . '<br>' .
