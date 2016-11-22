@@ -86,17 +86,42 @@ $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
 $race = array_key_exists('race', $_GET)
     ? $_GET['race']
     : '';
+
+if (array_key_exists('race', $_GET)) {
+
+    /**
+     * @param $race
+     * @return string
+     */
+    function getTitleForCharactersBasedOnTheir($race)
+    {
+        if ($race == 'Porc') {
+            $title = 'The Porcs';
+        } elseif ($race == 'Dwarf') {
+            $title = 'The Dwarves';
+        } elseif ($race == 'Gnome') {
+            $title = 'The Gnomes';
+        } elseif ($race == 'Goblin') {
+            $title = 'The Goblins';
+        } elseif ($race == 'Kobold') {
+            $title = 'The Kobolds';
+        } elseif ($race == 'Elf') {
+            $title = 'The Elves';
+        } else {
+            $title = '';
+        } return $title;
+    }
+
+    echo '<h2>' . getTitleForCharactersBasedOnTheir($race) . '</h2>';
+    $information = $characterInformationApi->getInformationFor($race);
+
 ?>
     <div class="division3">
 <?php
 
-if (array_key_exists('race', $_GET)) {
-    $information = $characterInformationApi->getInformationFor($race);
-
-//    echo '<h2>' . $characterInformation->getCharacterRaceForTitle($race) . '</h2>';
-
     /** @var Character $characterInformation */
     foreach ($information as $characterInformation) {
+
         echo '<div class="division4"><br>' . 'Name: ' . $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . '<br>' .
             'Gender: ' . $characterInformation->getGender() . '<br>' .
             'Sub Race: ' . $characterInformation->getSubRace() . '<br>' .

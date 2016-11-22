@@ -19,7 +19,7 @@ class SubRace
     }
 
     /**
-     * @return string $subRace
+     * @return string
      */
     public function getSubRace()
     {

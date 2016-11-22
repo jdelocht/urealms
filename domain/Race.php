@@ -7,6 +7,9 @@ namespace domain;
  */
 class Race
 {
+    /**
+     * @var $race
+     */
     private $race;
     /**
      * @var SubRace
@@ -15,12 +18,12 @@ class Race
 
     /**
      * Race constructor.
-     * @param $race
+     * @param $name
      * @param SubRace $subRace
      */
-    public function __construct($race, SubRace $subRace)
+    public function __construct($name, SubRace $subRace)
     {
-        $this->race = $race;
+        $this->race = $name;
         $this->subrace = $subRace;
         $this->assertThatRaceCantContainValueOtherThanGivenOptionsInForm();
     }
@@ -33,7 +36,7 @@ class Race
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRace()
     {
@@ -52,7 +55,8 @@ class Race
      * @param $race
      * @return string
      */
-    public function getCharacterRaceForTitle($race)
+    //doet nu nog niks
+    public function getTitleForCharactersBasedOnTheir($race)
     {
         if ($race == 'Porc') {
             return 'The Porcs';

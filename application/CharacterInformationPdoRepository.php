@@ -59,7 +59,7 @@ class CharacterInformationPdoRepository implements CharacterInformationRepositor
         $query = "INSERT INTO `urealms` (`name`, `last_name`, `race`, `sub_race`, `gender`, `class`) VALUES (
         '" . $character->getCharacterName() . "',
         '" . $character->getCharacterLastName() . "',
-        '" . $character->getCharacterRace() . "',
+        '" . $character->getRace() . "',
         '" . $character->getSubRace() . "',
         '" . $character->getGender() . "',
         '" . $character->getCharacterClass() . "')";
