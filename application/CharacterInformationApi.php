@@ -1,6 +1,6 @@
 <?php
 namespace application;
-use domain\CharacterInformation;
+use domain\Character;
 
 /**
  * @since 1.0
@@ -27,7 +27,7 @@ class CharacterInformationApi
         return $this->characterInformationRepository->getCharacterInformation($race);
     }
 
-    public function saveCharacter(CharacterInformation $character)
+    public function saveCharacter(Character $character)
     {
         $this->characterInformationRepository->saveCharacter($character);
     }

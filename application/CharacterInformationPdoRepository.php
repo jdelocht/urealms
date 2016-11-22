@@ -2,9 +2,10 @@
 
 namespace application;
 
-use domain\CharacterInformation;
+use domain\Character;
 use domain\Gender;
 use domain\Race;
+use domain\SubRace;
 use Exception;
 use PDO;
 
@@ -40,7 +41,7 @@ class CharacterInformationPdoRepository implements CharacterInformationRepositor
 
         foreach ($this->link->query($query) as $row) {
             try {
-                $characterInformation[] = new CharacterInformation($row['name'], $row['last_name'], new Race($row['race']), $row['sub_race'], new Gender($row['gender']), $row['class']);
+                $characterInformation[] = new Character($row['name'], $row['last_name'], new Race($row['race'], new SubRace($row['sub_race'])), new Gender($row['gender']), $row['class']);
                 } catch (Exception $e) {
                     echo 'Caught exception: One or more of the given values are not allowed';
                 }
@@ -50,16 +51,16 @@ class CharacterInformationPdoRepository implements CharacterInformationRepositor
     }
 
     /**
-     * @param CharacterInformation $character
+     * @param Character $character
      * @return \PDOStatement
      */
-    public function saveCharacter(CharacterInformation $character)
+    public function saveCharacter(Character $character)
     {
         $query = "INSERT INTO `urealms` (`name`, `last_name`, `race`, `sub_race`, `gender`, `class`) VALUES (
         '" . $character->getCharacterName() . "',
         '" . $character->getCharacterLastName() . "',
         '" . $character->getCharacterRace() . "',
-        '" . $character->getCharacterSubRace() . "',
+        '" . $character->getSubRace() . "',
         '" . $character->getGender() . "',
         '" . $character->getCharacterClass() . "')";
 

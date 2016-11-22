@@ -5,7 +5,7 @@ namespace domain;
  * @since 1.0
  * @author Echodes / Joost de Locht
  */
-class CharacterInformation
+class Character
 {
     /** @var string */
     private $characterName;
@@ -13,8 +13,6 @@ class CharacterInformation
     private $characterLastName;
     /** @var Race */
     private $race;
-    /** @var string  */
-    private $characterSubRace;
     /** @var string  */
     private $characterClass;
     /** @var Gender  */
@@ -29,11 +27,10 @@ class CharacterInformation
      * @param Gender $gender
      * @param string $characterClass
      */
-    public function __construct($characterName, $characterLastName, Race $race, $characterSubRace, Gender $gender, $characterClass)
+    public function __construct($characterName, $characterLastName, Race $race, Gender $gender, $characterClass)
     {
         $this->characterName = $characterName;
         $this->characterLastName = $characterLastName;
-        $this->characterSubRace = $characterSubRace;
         $this->characterClass = $characterClass;
         $this->gender = $gender;
         $this->race = $race;
@@ -67,9 +64,9 @@ class CharacterInformation
     /**
      * @return string
      */
-    public function getCharacterSubRace()
+    public function getSubRace()
     {
-        return $this->characterSubRace;
+        return $this->race->getSubRace();
     }
 
     /**
@@ -86,32 +83,5 @@ class CharacterInformation
     public function getCharacterClass()
     {
         return $this->characterClass;
-    }
-
-    /**
-     * @param $race
-     * @return string
-     */
-    public function getCharacterRaceForTitle($race)
-    {
-        if ($race == 'Porc') {
-            return 'The Porcs';
-        }
-        if ($race == 'Dwarf') {
-            return 'The Dwarves';
-        }
-        if ($race == 'Gnome') {
-            return 'The Gnomes';
-        }
-        if ($race == 'Goblin') {
-            return 'The Goblins';
-        }
-        if ($race == 'Kobold') {
-            return 'The Kobolds';
-        }
-        if ($race == 'Elf') {
-            return 'The Elves';
-        }
-        return '';
     }
 }

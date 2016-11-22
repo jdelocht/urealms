@@ -1,6 +1,6 @@
 <?php
 
-use domain\CharacterInformation;
+use domain\Character;
 use infrastructure\UrealmsApiFactory;
 
 //URL: http://localhost:4433/urealms/index.php?race=dwarf
@@ -93,13 +93,13 @@ $race = array_key_exists('race', $_GET)
 if (array_key_exists('race', $_GET)) {
     $information = $characterInformationApi->getInformationFor($race);
 
-    echo '<h2>' . $characterInformation->getCharacterRaceForTitle($race) . '</h2>';
+//    echo '<h2>' . $characterInformation->getCharacterRaceForTitle($race) . '</h2>';
 
-    /** @var CharacterInformation $characterInformation */
+    /** @var Character $characterInformation */
     foreach ($information as $characterInformation) {
         echo '<div class="division4"><br>' . 'Name: ' . $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . '<br>' .
             'Gender: ' . $characterInformation->getGender() . '<br>' .
-            'Sub Race: ' . $characterInformation->getCharacterSubRace() . '<br>' .
+            'Sub Race: ' . $characterInformation->getSubRace() . '<br>' .
             'Class: ' . $characterInformation->getCharacterClass() . '<br><br>' . '</div>';
     }
 }

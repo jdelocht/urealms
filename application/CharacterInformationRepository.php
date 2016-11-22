@@ -1,6 +1,6 @@
 <?php
 namespace application;
-use domain\CharacterInformation;
+use domain\Character;
 
 /**
  * @since 1.0
@@ -9,5 +9,5 @@ use domain\CharacterInformation;
 interface CharacterInformationRepository
 {
     public function getCharacterInformation($race);
-    public function saveCharacter(CharacterInformation $character);
+    public function saveCharacter(Character $character);
 }

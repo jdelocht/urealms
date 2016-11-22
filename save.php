@@ -6,9 +6,10 @@
  * Time: 9:23
  */
 
-use domain\CharacterInformation;
+use domain\Character;
 use domain\Gender;
 use domain\Race;
+use domain\SubRace;
 use infrastructure\UrealmsApiFactory;
 
 error_reporting(E_ALL);
@@ -31,7 +32,7 @@ $characterGender = $_POST['gender'];
 $characterClass = $_POST['class'];
 
 try {
-$character = new CharacterInformation($characterName, $characterLastName, new Race($characterRace), $characterSubRace, new Gender($characterGender), $characterClass);
+$character = new Character($characterName, $characterLastName, new Race($characterRace, new SubRace($characterSubRace)), new Gender($characterGender), $characterClass);
 } catch (Exception $e) {
     echo 'One or more of the given values are not allowed';
     header('location: /urealms/index.php');
