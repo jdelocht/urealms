@@ -7,30 +7,100 @@ namespace domain;
  */
 class Race
 {
-    /**
-     * @var $race
-     */
-    private $race;
-    /**
-     * @var SubRace
-     */
+    /** @var $id */
+    private $id;
+    /** @var $community*/
+    private $community;
+    /** @var SubRace */
     private $subrace;
 
     /**
+     * @return Race
+     */
+    private static function elf()
+    {
+        return new self('Elf', 'The Elves', new SubRace($subrace));
+    }
+
+    /**
+     * @return Race
+     */
+    private static function dwarf()
+    {
+        return new self('Dwarf', 'The Dwarves', new SubRace($subrace));
+    }
+
+    /**
+     * @return Race
+     */
+    private static function gnome()
+    {
+        return new self('Gnome', 'The Gnomes', new SubRace($subrace);
+    }
+
+    /**
+     * @return Race
+     */
+    private static function goblin()
+    {
+        return new self('Goblin', 'The Goblins', new SubRace($subrace));
+    }
+
+    /**
+     * @return Race
+     */
+    private static function kobold()
+    {
+        return new self('Kobold', 'The Kobolds', new SubRace($subrace));
+    }
+
+    /**
+     * @return Race
+     */
+    private static function porc()
+    {
+        return new self('Porc', 'The Porcs', new SubRace($subrace));
+    }
+
+    /**
+     * @param $id
+     * @return Race
+     */
+    public static function create($id)
+    {
+        switch($id){
+            case 'Elf':
+                return Race::elf();
+            case 'Dwarf':
+                return Race::dwarf();
+            case 'Gnome':
+                return Race::gnome();
+            case 'Goblin':
+                return Race::goblin();
+            case 'Kobold':
+                return Race::kobold();
+            case 'Porc':
+                return Race::porc();
+        } return $id;
+    }
+
+    /**
      * Race constructor.
-     * @param $name
+     * @param $id
+     * @param $community
      * @param SubRace $subRace
      */
-    public function __construct($name, SubRace $subRace)
+    private function __construct($id, $community, SubRace $subRace)
     {
-        $this->race = $name;
+        $this->id = $id;
         $this->subrace = $subRace;
         $this->assertThatRaceCantContainValueOtherThanGivenOptionsInForm();
+        $this->community = $community;
     }
 
     public function assertThatRaceCantContainValueOtherThanGivenOptionsInForm()
     {
-        if($this->race != 'Elf' && $this->race != 'Dwarf' && $this->race != 'Gnome' && $this->race != 'Kobold' && $this->race != 'Goblin' && $this->race != 'Porc') {
+        if($this->id != 'Elf' && $this->id != 'Dwarf' && $this->id != 'Gnome' && $this->id != 'Kobold' && $this->id != 'Goblin' && $this->id != 'Porc') {
             throw new RaceMustContainValueGivenInForm();
         }
     }
@@ -38,9 +108,9 @@ class Race
     /**
      * @return string
      */
-    public function getRace()
+    public function getId()
     {
-        return $this->race;
+        return $this->id;
     }
 
     /**

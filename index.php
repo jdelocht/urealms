@@ -24,7 +24,7 @@ $characterInformationApi = UrealmsApiFactory::getCharacterInformationApi();
 
 <body class="main">
     <div class="top">
-    <br><img src="http://live.urealms.com/img/logo.png" height="200px"></div>
+    <br><a href = "http://localhost:4433/urealms/index.php" class = "button3"><img src="http://live.urealms.com/img/logo.png" height="200px"></a></div>
     <h1>Character Creation</h1>
 
     <form action = "save.php" method = "post">
