@@ -7,49 +7,52 @@ namespace domain;
  */
 class Character
 {
-    /** @var string */
-    private $characterName;
-    /** @var string  */
-    private $characterLastName;
     /** @var Race */
     private $race;
-    /** @var string  */
-    private $characterClass;
-    /** @var Gender  */
+    /** @var Gender */
     private $gender;
+    /** @var Name */
+    private $name;
+    /** @var CharacterClass  */
+    private $characterClass;
 
     /**
-     * CharacterInformation constructor.
-     * @param string $characterName
-     * @param string $characterLastName
+     * Character constructor.
+     * @param Name $name
      * @param Race $id
-     * @param string $characterSubRace
      * @param Gender $gender
-     * @param string $characterClass
+     * @param $characterClass
      */
-    public function __construct(Name $name, $characterName, $characterLastName, Race $id, Gender $gender, $characterClass)
+    public function __construct(Name $name, Race $id, Gender $gender, CharacterClass $characterClass)
     {
-        $this->characterName = $characterName;
-        $this->characterLastName = $characterLastName;
-        $this->characterClass = $characterClass;
+        $this->name = $name;
         $this->gender = $gender;
         $this->race = $id;
+        $this->characterClass = $characterClass;
+    }
+
+    /**
+     * @return Name
+     */
+    public function getName()
+    {
+        return $this->name->getNameAsFormattedString();
     }
 
     /**
      * @return string
      */
-    public function getCharacterName()
+    public function getFirstName()
     {
-        return $this->characterName;
+        return $this->name->getFirstName();
     }
 
     /**
      * @return string
      */
-    public function getCharacterLastName()
+    public function getLastName()
     {
-        return $this->characterLastName;
+        return $this->name->getLastName();
     }
 
     /**
@@ -82,6 +85,6 @@ class Character
      */
     public function getCharacterClass()
     {
-        return $this->characterClass;
+        return $this->characterClass->getClass();
     }
 }

@@ -122,7 +122,7 @@ if (array_key_exists('race', $_GET)) {
     /** @var Character $characterInformation */
     foreach ($information as $characterInformation) {
 
-        echo '<div class="division4"><br>' . 'Name: ' . $characterInformation->getCharacterName() . ' ' . $characterInformation->getCharacterLastName() . '<br>' .
+        echo '<div class="division4"><br>' . 'Name: ' . $characterInformation->getName() . '<br>' .
             'Gender: ' . $characterInformation->getGender() . '<br>' .
             'Sub Race: ' . $characterInformation->getSubRace() . '<br>' .
             'Class: ' . $characterInformation->getCharacterClass() . '<br><br>' . '</div>';

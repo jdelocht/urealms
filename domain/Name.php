@@ -26,4 +26,29 @@ class Name
         $this->firstName = $firstName;
         $this->lastName = $lastName;
     }
+
+    /**
+     * @return string
+     */
+    public function getNameAsFormattedString()
+    {
+        return $this->firstName->getName() . ' ' . $this->lastName->getName();
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName->getName();
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName->getName();
+    }
+
 }

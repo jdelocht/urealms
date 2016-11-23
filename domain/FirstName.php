@@ -7,14 +7,37 @@ namespace domain;
  */
 class FirstName
 {
-    private $firstName;
+    private $name;
 
     /**
      * FirstName constructor.
-     * @param $firstName
+     * @param $name
      */
-    public function __construct($firstName)
+    public function __construct($name)
     {
-        $this->firstName = $firstName;
+        $this->name = $name;
+        $this->assertThatFirstNameIsNotAnEmptyString();
+    }
+
+    /**
+     * @throws FirstNameCantBeValuedAsAnEmptyString
+     * @throws FirstNameMustBeValuedAsString
+     */
+    public function assertThatFirstNameIsNotAnEmptyString()
+    {
+        if(!is_string($this->name)) {
+            throw new FirstNameMustBeValuedAsString();
+        }
+        if($this->name == '') {
+            throw new FirstNameCantBeValuedAsAnEmptyString();
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

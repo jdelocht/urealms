@@ -7,7 +7,11 @@
  */
 
 use domain\Character;
+use domain\CharacterClass;
+use domain\FirstName;
 use domain\Gender;
+use domain\LastName;
+use domain\Name;
 use domain\Race;
 use domain\SubRace;
 use infrastructure\UrealmsApiFactory;
@@ -32,7 +36,7 @@ $characterGender = $_POST['gender'];
 $characterClass = $_POST['class'];
 
 try {
-$character = new Character($characterName, $characterLastName, new Race($characterRace, new SubRace($characterSubRace)), new Gender($characterGender), $characterClass);
+$character = new Character(new Name(new FirstName($characterName), new LastName($characterLastName)), new Race($characterRace, new SubRace($characterSubRace)), new Gender($characterGender), new CharacterClass($characterClass));
 } catch (Exception $e) {
     echo 'One or more of the given values are not allowed';
     header('location: /urealms/index.php');
