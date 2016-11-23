@@ -27,7 +27,7 @@ class Character
      * @param Gender $gender
      * @param string $characterClass
      */
-    public function __construct($characterName, $characterLastName, Race $id, Gender $gender, $characterClass)
+    public function __construct(Name $name, $characterName, $characterLastName, Race $id, Gender $gender, $characterClass)
     {
         $this->characterName = $characterName;
         $this->characterLastName = $characterLastName;
